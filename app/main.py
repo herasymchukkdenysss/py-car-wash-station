@@ -37,11 +37,8 @@ class CarWashStation:
         if pure_cost <= 0:
             return 0
 
-        final_price = (
-            car.comfort_class
-            * pure_cost
-            * (self.average_rating / self.distance_from_city_center)
-        )
+        rating_factor = self.average_rating / self.distance_from_city_center
+        final_price = car.comfort_class * pure_cost * rating_factor
         return round(final_price, 1)
 
     def wash_single_car(self, car: Car) -> None:
